@@ -8,13 +8,17 @@ const Player = (props) => {
   const { name, symbol } = props;
 
   const editHandler = () => {
-    setIsEditing(true);
+    setIsEditing((editing) => !editing);
   };
   return (
     <div>
       <li>
         <span className="player">
-          {isEditing ? <input /> : <span className="player-name">{name}</span>}
+          {isEditing ? (
+            <input type="text" className="" value={name} />
+          ) : (
+            <span className="player-name">{name}</span>
+          )}
           <span className="player-symbol">{symbol}</span>
         </span>
         <button onClick={editHandler}>{isEditing ? "Save" : "Edit"}</button>
