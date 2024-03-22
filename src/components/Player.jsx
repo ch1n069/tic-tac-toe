@@ -10,15 +10,16 @@ const Player = (props) => {
   const editHandler = () => {
     setIsEditing((editing) => !editing);
   };
+  let player = <span className="player-name">{name}</span>;
+  // check the status of editing
+  if (isEditing) {
+    player = <input type="text" className="" defaultValue={name} />;
+  }
   return (
     <div>
       <li>
         <span className="player">
-          {isEditing ? (
-            <input type="text" className="" value={name} />
-          ) : (
-            <span className="player-name">{name}</span>
-          )}
+          {player}
           <span className="player-symbol">{symbol}</span>
         </span>
         <button onClick={editHandler}>{isEditing ? "Save" : "Edit"}</button>
