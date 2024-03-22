@@ -6,14 +6,26 @@ const Player = (props) => {
   //   editing handler function
 
   const { name, symbol } = props;
+  const [playerName, setPlayerName] = useState(name);
 
   const editHandler = () => {
     setIsEditing((editing) => !editing);
   };
+  const playerInputHandler = (e) => {
+    setPlayerName(e.target.value);
+  };
+
   let player = <span className="player-name">{name}</span>;
   // check the status of editing
   if (isEditing) {
-    player = <input type="text" className="" defaultValue={name} />;
+    player = (
+      <input
+        onChange={playerInputHandler}
+        type="text"
+        className=""
+        defaultValue={playerName}
+      />
+    );
   }
   return (
     <div>
