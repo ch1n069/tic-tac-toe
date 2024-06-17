@@ -5,7 +5,7 @@ const Player = (props) => {
 
   //   editing handler function
 
-  const { name, symbol } = props;
+  const { name, symbol, isActive } = props;
   const [playerName, setPlayerName] = useState(name);
 
   const editHandler = () => {
@@ -29,7 +29,7 @@ const Player = (props) => {
   }
   return (
     <div>
-      <li>
+      <li className={isActive ? "active" : undefined}>
         <span className="player">
           {player}
           <span className="player-symbol">{symbol}</span>
